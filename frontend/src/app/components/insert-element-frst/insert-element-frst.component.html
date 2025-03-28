@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Salgados</title>
+    <link rel="stylesheet" href="insert-element-frst.component.css">
+</head>
+<body>
+    <div class="container">
+        <form class="form-container" (ngSubmit)="onSubmit()" #insertForm="ngForm">
+          <div class="input-group">
+            <label for="name">Salgado</label>
+            <input type="text" id="name" name="name" [(ngModel)]="formData.name" required placeholder="Nome do salgado">
+          </div>
+          
+          <div class="input-group">
+            <label for="quantity">Quantidade</label>
+            <input type="number" id="quantity" name="quantity" [(ngModel)]="formData.quantity" required placeholder="Quantidade produzida">
+          </div>
+          
+          <div class="input-group">
+            <label for="insertDate">Dt. Fabricação</label>
+            <input type="date" id="insertDate" name="insertDate" [(ngModel)]="formData.insertDate" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="expirationDate">Validade</label>
+            <input type="date" id="expirationDate" name="expirationDate" [(ngModel)]="formData.expirationDate" required>
+          </div>
+          
+          <div class="input-group">
+            <label for="unitValue">Preço unidade (R$)</label>
+            <input type="number" id="unitValue" name="unitValue" [(ngModel)]="formData.unitValue" step="0.01" required placeholder="Preço por unidade">
+          </div>
+          
+          <div class="input-group">
+            <label for="packageValue">Preço cento (R$)</label>
+            <input type="number" id="packageValue" name="packageValue" [(ngModel)]="formData.packageValue" step="0.01" required placeholder="Preço por cento">
+          </div>
+          
+          <button type="submit" class="btn-cadastrar" [disabled]="!insertForm.form.valid">Cadastrar</button>
+        </form>
+      </div>
+</body>
+</html>

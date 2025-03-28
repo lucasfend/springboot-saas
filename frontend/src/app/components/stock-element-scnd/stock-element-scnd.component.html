@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stock-element-scnd.component.scss">
+    <title>Document</title>
+</head>
+<body>
+<div class="stock-container">
+    <h2>Estoque de Mercadorias</h2>
+    
+    <div *ngIf="isLoading" class="loading">
+      Carregando dados...
+    </div>
+    
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+    
+    <table *ngIf="!isLoading && stockScndItems.length > 0">
+      <thead>
+        <tr>
+          
+          <th>Nome</th>
+          <th>Quantidade</th>
+          <th>Valor Pago</th>
+          <th>Valido até</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of stockScndItems">
+          <td>{{ item.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item.value | currency:'BRL' }}</td>
+          <td>{{ item.expirationDate | date:'yyyy/MM/dd' }}</td>
+          <td><button (click)="deleteItemScnd(item.id!)" class="delete-btn">
+            Excluir
+          </button></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="!isLoading && stockScndItems.length === 0" class="empty-message">
+      Nenhum item encontrado no estoque.
+    </div>
+  </div>
+</body>
+</html>
